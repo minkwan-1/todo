@@ -1,24 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useRef } from "react";
+import PageContainer from "./layout/common/PageContainer";
+import HomePage from "./pages/HomePage";
 
 function App() {
+  const ref = useRef([]);
+
+  const scrollClick = (index) => {
+    ref.current[index].scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PageContainer scrollClick={scrollClick}>
+      <HomePage ref={ref} />
+    </PageContainer>
   );
 }
 
